@@ -1,22 +1,21 @@
 import React,{useState} from "react";
-import Exibir from "./Exibir";
 
 
-export default function Cadastro({link, setLink}){
-    let send = false
+export default function CadastroLink({dispatch}){
+    
 
     function handleSubmit(evt){
+   
         evt.preventDefault()
+        
+
         const link_name = evt.target.link_name.value
         const link_url = evt.target.link_url.value
 
         //atualizar array com react hook
-        setLink(link => [...link,{link_name: link_name, link_url: link_url}])
-
-        console.log(link)
-        send = true
+        //setLink(link => [...link ,link_name, link_url])
         
-    
+        dispatch({type: 'LINK', link_name: link_name, link_url: link_url })
 
 
     }
@@ -30,9 +29,7 @@ export default function Cadastro({link, setLink}){
             <input type='text'  name='link_url' id='link_url' />
             <input type='submit' value='enviar'/>
         </form>
-        {
-            link && <Exibir link={link}/>
-        }
+      
     </div>
     )
 }

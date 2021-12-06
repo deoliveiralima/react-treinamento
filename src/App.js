@@ -1,16 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import Cadastro from './components/links/Cadastro';
-import React,{useState} from 'react';
-import Exibir from './components/links/Exibir';
 
+import React,{useState, useReducer} from 'react';
+
+import PanielAtividade from './components/atividades/PainelAtividade';
+import PainelLink from './components/links/PainelLink';
+import appReducer  from './reducers';
+import Opcao from './components/opcoes/Opcao';
 function App() {
-  const [link, setLink] = useState([link = {nome: '', url: ''}])
+  const [state, dispatch] = useReducer(appReducer,{links:[], atividades:[] })
  
-  return (
-    <div className="App">
-     <Cadastro link={link} setLink = {setLink}/>
+  const {links, atividades} = state
+  console.log('em App')
+  console.log(links)
+  
+ 
+  return ( 
 
+    <div className="App">
+      <Opcao dispatch={dispatch}/>
+
+     <PainelLink dispatch={dispatch} links={links} />
+     
+    <PanielAtividade dispatch={dispatch} atividade={atividades}/>
     </div>
   );
 }
