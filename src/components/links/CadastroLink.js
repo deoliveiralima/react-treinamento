@@ -1,7 +1,9 @@
-import React,{useState} from "react";
+import React,{useContext} from "react";
+import { StateContext } from "../../context";
 
+export default function CadastroLink(){
 
-export default function CadastroLink({dispatch}){
+    const {dispatch} = useContext(StateContext)
     
 
     function handleSubmit(evt){

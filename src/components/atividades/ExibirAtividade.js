@@ -1,14 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
+import { StateContext } from "../../context";
 
+export default function ExibirAtividade(){
+    
+    const {state} = useContext(StateContext)
+    const {atividades} = state
 
-export default function ExibirAtividade({atividade}){
-   
-
-    if(atividade){
+    if(atividades){
         return(
             <div>
-                
-                
                 <table className="table">
                     <thead>
                         <tr>
@@ -18,7 +18,7 @@ export default function ExibirAtividade({atividade}){
                         </tr>
                     </thead>
                     <tbody>
-                    { atividade.map( (item, i) => 
+                    { atividades.map( (item, i) => 
 
                         <tr key={i}>
                             <td scope="row">{i}</td>
@@ -36,7 +36,7 @@ export default function ExibirAtividade({atividade}){
     }else{
         return(
             <div>
-                Nao encontrado
+               
             </div>
         )
     }

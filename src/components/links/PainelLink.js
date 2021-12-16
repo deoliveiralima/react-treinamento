@@ -1,17 +1,23 @@
-import React,{useState} from "react";
+import React,{useContext} from "react";
 import CadastroLink from "./CadastroLink";
 import ExibirLink from "./ExibirLink";
 
+import { StateContext } from "../../context";
 
 
-export default function PainelLink({dispatch, links = []}){
+export default function PainelLink(){
+    const {state} = useContext(StateContext)
+    const {links}  = state
+
+   
 
     
     return(
         <React.Fragment>
-            <CadastroLink dispatch={dispatch}  />
+            
+            <CadastroLink />
 
-            <ExibirLink links = {links}/>
+            { links.length>0 && <ExibirLink /> }
 
         </React.Fragment>
     )

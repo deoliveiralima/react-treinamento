@@ -1,8 +1,14 @@
 import React from "react";
+import { useContext } from "react/cjs/react.development";
+import { StateContext } from "../../context";
 
 
-export default function ExibirLink({links}){
-    console.log(links)
+export default function ExibirLink(){
+
+    const {state} = useContext(StateContext)
+    const {links} = state
+
+    
 
     if(links){
         return(
@@ -18,7 +24,17 @@ export default function ExibirLink({links}){
                         </tr>
                     </thead>
                     <tbody>
-                   
+                    { links.map( (item, i) => 
+
+                    <tr key={i}>
+                        <td scope="row">{i}</td>
+                        <td>{item.nome_link}</td>
+                        <td>{item.url_link}</td>
+                    </tr>
+                    ) 
+
+                    }
+                                    
                       
                     </tbody>
                 </table>
@@ -27,7 +43,7 @@ export default function ExibirLink({links}){
     }else{
         return(
             <div>
-                Nao encontrado
+               
             </div>
         )
     }

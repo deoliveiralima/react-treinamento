@@ -1,18 +1,22 @@
-import React,{useState} from "react";
+import React,{useContext} from "react";
+
 import CadastroAtividade from "./CadastroAtividade";
 import ExibirAtividade from "./ExibirAtividade";
 
+import { StateContext } from "../../context";
+
 
 export default function PanielAtividade(){
+    const {state} = useContext(StateContext)
+    const {atividades} = state
 
-    const [atividade, setAtividade] = useState([])
     return(
         <React.Fragment>
-            <CadastroAtividade  atividade={atividade} setAtividade={setAtividade} />
-
-            {
-            atividade.length>0 && <ExibirAtividade atividade={atividade}/>
-            }
+            <CadastroAtividade  />
+           
+            
+             { atividades.length>0 && <ExibirAtividade />}
+            
 
         </React.Fragment>
     )

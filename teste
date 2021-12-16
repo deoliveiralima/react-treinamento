@@ -5,10 +5,7 @@ function linkReducer(state, action){
             const newLink = {nome_link: action.link_name, url_link: action.link_url}
             
 
-            return [newLink, ...state]
-
-            default:
-                return state
+            return newLink
     }
 
 }
@@ -20,20 +17,23 @@ function atividadeReducer(state, action){
             const newAtividade = {nome_atividade: action.nome_atividade, descricao_atividade: action.descricao_atividade}
             
 
-            return [newAtividade, ...state]
-        default:
-            return state
+            return newAtividade
     }
 
 }
 
 export default function appReducer(state, action){
-    
-    return{
-        links: linkReducer(state.links, action),
-        atividades: atividadeReducer(state.atividades, action)
+    switch(action.type){
+        case 'ATIVIDADE':
 
     }
+    return{
+        
+        links: [...state.links, linkReducer(state.links, action)],
+        atividades: [...state.atividades, atividadeReducer(state.atividades, action)]
+
+    }
+    
 
 
     // switch(action.type){

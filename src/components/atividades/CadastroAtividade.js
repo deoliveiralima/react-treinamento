@@ -1,17 +1,21 @@
 import React from "react";
+import { useContext } from "react/cjs/react.development";
+import { StateContext } from "../../context";
 
 
-let send = false
-export default function CadastroAtividade({atividade, setAtividade}){
+
+export default function CadastroAtividade(){
+
+    const {dispatch} = useContext(StateContext)
+
     
     function handleSubmit(evt){
         evt.preventDefault()
 
         const nome_atividade = evt.target.nome_atividade.value
         const descricao_atividade = evt.target.descricao_atividade.value
-
-        setAtividade(atividade => [...atividade ,{nome_atividade: nome_atividade, descricao_atividade: descricao_atividade}])
-        send = true
+       
+        dispatch({type:'ATIVIDADE', nome_atividade: nome_atividade, descricao_atividade: descricao_atividade})
 
     }
 

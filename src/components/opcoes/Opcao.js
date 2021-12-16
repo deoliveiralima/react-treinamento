@@ -1,16 +1,19 @@
 import React from "react"
 
 
-export default function Opcao({dispatch}){
+export default function Opcao({setOpcao}){
 
     function handleSubmit(evt){
         evt.preventDefault()
         
         const opcao = evt.target.opcao.value
 
-        opcao === 'link' ? dispatch({type:'LINK'}) : dispatch({type: 'ATIVIDADE'})
-        console.log(dispatch.type)
+        setOpcao = opcao
+        console.log(opcao)
+
+
     }
+
     return(
 
         <>
