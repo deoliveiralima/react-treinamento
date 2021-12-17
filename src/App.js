@@ -13,15 +13,13 @@ function App() {
 
   const {links, atividades} = state
   
-
+  console.log(links)
   return ( 
 
     
      <StateContext.Provider value={{state, dispatch}}> 
 
-      <PainelLink/>
-      <PanielAtividade /> 
-
+     <Opcao/>
      </StateContext.Provider>
     
   );

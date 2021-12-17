@@ -1,7 +1,20 @@
-import React from "react"
-
+import React, {useState} from "react"
+import PanielAtividade from "../atividades/PainelAtividade"
+import PainelLink from "../links/PainelLink"
 
 export default function Opcao({setOpcao}){
+    const [painel, setPainel] = useState('')
+
+
+
+    function abrePainelAtividade(){
+        setPainel('atividade')
+       
+    }
+
+    function abrePainelLink(){
+        setPainel('link')
+    }
 
     function handleSubmit(evt){
         evt.preventDefault()
@@ -17,15 +30,12 @@ export default function Opcao({setOpcao}){
     return(
 
         <>
-            <form onSubmit = {handleSubmit}>
-                <input type='radio' name='opcao' id='link' value='link' />
-                <label htmlFor='link'>Link</label>
 
-                <input type='radio' name='opcao' value='atividade' id='atividade'/>
-                <label htmlFor='link'>Atividade</label>
-                
-                <input type='submit' value="Escolher"/>                
-            </form>
+            <button onClick={abrePainelAtividade}> Atividades </button> 
+            <button onClick={abrePainelLink}> Links</button>
+            {painel === 'atividade' && <PanielAtividade/>}
+            {painel === 'link' && <PainelLink/>}
+
         </>
     )
 }
